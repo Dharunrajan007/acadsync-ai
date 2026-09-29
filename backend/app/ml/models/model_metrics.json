@@ -1,0 +1,105 @@
+{
+  "completion_model": {
+    "model_type": "GradientBoostingRegressor",
+    "task": "regression",
+    "metrics": {
+      "mae": 0.5921,
+      "rmse": 0.8837,
+      "r2": 0.8728
+    },
+    "all_candidates": {
+      "LinearRegression": {
+        "mae": 0.7184,
+        "rmse": 1.0455,
+        "r2": 0.8219
+      },
+      "RandomForestRegressor": {
+        "mae": 0.6331,
+        "rmse": 0.9582,
+        "r2": 0.8504
+      },
+      "GradientBoostingRegressor": {
+        "mae": 0.5921,
+        "rmse": 0.8837,
+        "r2": 0.8728
+      }
+    },
+    "baselines": {
+      "predict_mean": {
+        "mae": 1.8199,
+        "rmse": 2.4781,
+        "r2": -0.0006
+      },
+      "teacher_estimate": {
+        "mae": 1.2929,
+        "rmse": 2.0323,
+        "r2": 0.327
+      }
+    },
+    "train_rows": 6400,
+    "test_rows": 1600
+  },
+  "data_source": "synthetic",
+  "deadline_model": {
+    "model_type": "LogisticRegression",
+    "task": "binary_classification",
+    "positive_class": "submitted_late",
+    "metrics": {
+      "accuracy": 0.8838,
+      "precision": 0.7126,
+      "recall": 0.9005,
+      "f1": 0.7956,
+      "roc_auc": 0.958,
+      "confusion_matrix": {
+        "true_negative": 1052,
+        "false_positive": 146,
+        "false_negative": 40,
+        "true_positive": 362
+      }
+    },
+    "all_candidates": {
+      "LogisticRegression": {
+        "accuracy": 0.8838,
+        "precision": 0.7126,
+        "recall": 0.9005,
+        "f1": 0.7956,
+        "roc_auc": 0.958,
+        "confusion_matrix": {
+          "true_negative": 1052,
+          "false_positive": 146,
+          "false_negative": 40,
+          "true_positive": 362
+        }
+      },
+      "RandomForestClassifier": {
+        "accuracy": 0.8762,
+        "precision": 0.7048,
+        "recall": 0.8731,
+        "f1": 0.78,
+        "roc_auc": 0.9487,
+        "confusion_matrix": {
+          "true_negative": 1051,
+          "false_positive": 147,
+          "false_negative": 51,
+          "true_positive": 351
+        }
+      },
+      "GradientBoostingClassifier": {
+        "accuracy": 0.8869,
+        "precision": 0.8044,
+        "recall": 0.7264,
+        "f1": 0.7634,
+        "roc_auc": 0.9523,
+        "confusion_matrix": {
+          "true_negative": 1127,
+          "false_positive": 71,
+          "false_negative": 110,
+          "true_positive": 292
+        }
+      }
+    },
+    "majority_class_accuracy": 0.7488,
+    "train_rows": 6400,
+    "test_rows": 1600
+  }
+}

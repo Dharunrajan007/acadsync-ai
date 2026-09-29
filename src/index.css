@@ -1,0 +1,135 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  body {
+    @apply bg-canvas text-ink font-sans antialiased;
+  }
+  * {
+    @apply border-slate-200;
+  }
+  /* Grid items default to min-width:auto, so one unshrinkable descendant stretches
+     its whole track and pushes the page sideways on narrow screens. Opting every
+     grid child down to 0 kills that class of bug at the root; anything that needs
+     an intrinsic width still declares an explicit width or shrink-0. */
+  .grid > * {
+    min-width: 0;
+  }
+
+  :focus-visible {
+    @apply outline-none ring-2 ring-brand-500 ring-offset-2 ring-offset-white rounded-md;
+  }
+  /* Inputs that are themselves the focused surface (the search palette) manage
+     their own affordance; the global ring double-draws on them. */
+  .no-focus-ring:focus-visible {
+    @apply ring-0 ring-offset-0;
+  }
+}
+
+@layer components {
+  .card {
+    @apply min-w-0 bg-white border border-slate-200/80 rounded-2xl shadow-card;
+  }
+  /* Anything the user can click gets a pointer — including whole-card link targets. */
+  a[href], [role='button'], [role='tab'], [role='switch'], summary,
+  label[for], select, input[type='range'], input[type='checkbox'], input[type='radio'] {
+    @apply cursor-pointer;
+  }
+  .card-pad {
+    @apply p-5 sm:p-6;
+  }
+  .btn {
+    @apply inline-flex cursor-pointer items-center justify-center gap-2 rounded-lg text-sm font-semibold
+           transition-all duration-150 select-none disabled:cursor-not-allowed disabled:opacity-50 disabled:pointer-events-none;
+  }
+  .btn-md { @apply h-10 px-4; }
+  .btn-sm { @apply h-9 px-3 text-[13px]; }
+  .btn-lg { @apply h-12 px-6 text-[15px]; }
+  .btn-primary {
+    @apply bg-brand-600 text-white hover:bg-brand-700 active:scale-[0.98] shadow-sm;
+  }
+  .btn-secondary {
+    @apply bg-white text-ink border border-slate-300 hover:bg-slate-50 hover:border-slate-400 active:scale-[0.98];
+  }
+  .btn-ghost {
+    @apply text-ink-soft hover:bg-slate-100 hover:text-ink active:scale-[0.98];
+  }
+  .btn-violet {
+    @apply bg-violetx-600 text-white hover:bg-violetx-700 active:scale-[0.98];
+  }
+  .btn-danger {
+    @apply bg-risk text-white hover:brightness-95 active:scale-[0.98];
+  }
+  .input {
+    @apply w-full h-10 rounded-lg border border-slate-300 bg-white px-3 text-sm text-ink placeholder:text-ink-muted
+           transition focus:border-brand-500 focus:ring-4 focus:ring-brand-500/10 focus:outline-none;
+  }
+  .textarea {
+    @apply w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm text-ink placeholder:text-ink-muted
+           transition focus:border-brand-500 focus:ring-4 focus:ring-brand-500/10 focus:outline-none;
+  }
+  .label {
+    @apply block text-[13px] font-semibold text-ink-soft mb-1.5;
+  }
+  .hint {
+    @apply text-xs text-ink-muted mt-1.5;
+  }
+  .section-title {
+    @apply text-lg font-bold tracking-tight text-ink;
+  }
+  /* Dashboard figures line up column-to-column and never jitter while animating. */
+  .tnum {
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: 'tnum' 1;
+  }
+  .stack {
+    @apply flex flex-col gap-5;
+  }
+  .table-wrap {
+    @apply overflow-x-auto -mx-5 sm:mx-0 px-5 sm:px-0;
+  }
+  .th {
+    @apply text-left text-[11px] font-bold uppercase tracking-wider text-ink-muted py-3 px-4 whitespace-nowrap;
+  }
+  .td {
+    @apply py-3.5 px-4 text-sm text-ink-soft whitespace-nowrap;
+  }
+  .td-num {
+    @apply py-3.5 px-4 text-sm text-ink-soft whitespace-nowrap text-right tnum;
+  }
+  .th-num {
+    @apply text-right text-[11px] font-bold uppercase tracking-wider text-ink-muted py-3 px-4 whitespace-nowrap;
+  }
+  .ai-surface {
+    background: linear-gradient(135deg, #F4F2FF 0%, #EEF1FF 55%, #F7F5FF 100%);
+  }
+  .hero-surface {
+    background:
+      radial-gradient(1000px 460px at 12% -12%, rgba(139, 92, 240, 0.16), transparent 62%),
+      radial-gradient(900px 420px at 88% 4%, rgba(68, 68, 214, 0.14), transparent 60%),
+      #FBFBFE;
+  }
+  .grid-lines {
+    background-image:
+      linear-gradient(to right, rgba(27,31,42,0.045) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(27,31,42,0.045) 1px, transparent 1px);
+    background-size: 46px 46px;
+  }
+}
+
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #D6DAE5; border-radius: 999px; border: 3px solid transparent; background-clip: content-box; }
+::-webkit-scrollbar-thumb:hover { background: #B9BFCE; background-clip: content-box; border: 3px solid transparent; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

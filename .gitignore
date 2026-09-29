@@ -1,0 +1,28 @@
+# Dependencies
+node_modules/
+backend/.venv/
+backend/venv/
+
+# Build output
+dist/
+build/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+
+# Local screenshots produced by the audit tools
+screenshots/
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Editor / OS
+.DS_Store
+Thumbs.db
+.idea/
+*.swp
